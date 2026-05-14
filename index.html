@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyBuddy Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div id="auth" class="screen active">
+
+  <div class="auth-box">
+
+    <h1>StudyBuddy Pro</h1>
+
+    <p>Smart task management for students</p>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Username"
+    >
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+    >
+
+    <button onclick="signUp()">
+      Sign Up
+    </button>
+
+    <button onclick="login()">
+      Login
+    </button>
+
+  </div>
+
+</div>
+
+<!-- HOME SCREEN -->
+<div id="home" class="screen">
+
+  <header>
+
+    <div>
+      <h2>My Tasks</h2>
+      <p id="taskCount">0 Tasks</p>
+    </div>
+
+    <div class="top-buttons">
+
+      <button onclick="toggleDarkMode()">
+        Dark
+      </button>
+
+      <button onclick="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard">
+
+    <div class="card">
+      <h3 id="completedCount">0</h3>
+      <p>Completed</p>
+    </div>
+
+    <div class="card">
+      <h3 id="pendingCount">0</h3>
+      <p>Pending</p>
+    </div>
+
+    <div class="card">
+      <h3 id="overdueCount">0</h3>
+      <p>Overdue</p>
+    </div>
+
+  </div>
+
+  <!-- SEARCH -->
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search tasks..."
+    onkeyup="renderTasks()"
+  >
+
+  <!-- FILTERS -->
+  <div class="filters">
+
+    <button onclick="setFilter('all')">
+      All
+    </button>
+
+    <button onclick="setFilter('pending')">
+      Pending
+    </button>
+
+    <button onclick="setFilter('completed')">
+      Completed
+    </button>
+
+    <button onclick="setFilter('overdue')">
+      Overdue
+    </button>
+
+  </div>
+
+  <!-- HISTORY -->
+  <button class="history-btn" onclick="toggleHistory()">
+    View History
+  </button>
+
+  <div id="historySection">
+
+    <h3>Task History</h3>
+
+    <ul id="historyList"></ul>
+
+  </div>
+
+  <!-- EMPTY -->
+  <div id="emptyState">
+
+    <h2>No Tasks Available</h2>
+
+    <p>Add a task to get started.</p>
+
+  </div>
+
+  <!-- TASKS -->
+  <ul id="taskList"></ul>
+
+  <!-- FLOATING BUTTON -->
+  <button class="fab" onclick="openModal()">
+    +
+  </button>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+
+  <div class="modal-content">
+
+    <h3>Add Task</h3>
+
+    <input
+      type="text"
+      id="taskInput"
+      placeholder="Task name"
+    >
+
+    <input
+      type="datetime-local"
+      id="dateInput"
+    >
+
+    <select id="priorityInput">
+
+      <option value="low">
+        Low Priority
+      </option>
+
+      <option value="medium">
+        Medium Priority
+      </option>
+
+      <option value="high">
+        High Priority
+      </option>
+
+    </select>
+
+    <select id="categoryInput">
+
+      <option value="Homework">
+        Homework
+      </option>
+
+      <option value="Project">
+        Project
+      </option>
+
+      <option value="Quiz">
+        Quiz
+      </option>
+
+      <option value="Exam">
+        Exam
+      </option>
+
+      <option value="Personal">
+        Personal
+      </option>
+
+    </select>
+
+    <button onclick="addTask()">
+      Save Task
+    </button>
+
+    <button class="cancel" onclick="closeModal()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
